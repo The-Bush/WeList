@@ -1,5 +1,5 @@
 import sqlite3
-from flask import redirect, session
+from flask import redirect, session, url_for
 from functools import wraps
 
 def create_db_connection():
@@ -22,6 +22,9 @@ def session_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+def generate_referral(list_id, list_name):
+    url = url_for('referral', list_id=list_id, list_name=list_name, _external=True)
+    return url
 
 def remove_list(list_id):
     connection, db = create_db_connection()

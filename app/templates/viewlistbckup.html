@@ -7,9 +7,7 @@
 {% block main %}
 
 <div class="container">
-    <h2>{{ listname }}</h2> <h5>List Total: {{ totalcost | usd }} </h5> 
-    <button class="btn btn-sm" id="shareButton" value="{{ link }}">Copy Share Link</button>
-    <div id="copyStatus" class="small"></div>
+    <h2>{{ listname }}</h2> <h5>List Total: {{ totalcost | usd }} </h5>
 
     <form method="POST" action="{{ url_for('add_item') }}" class="form-inline">
       <div class="row">
@@ -28,11 +26,13 @@
         </div>
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-success">Add Item</button>
+        <button type="submit" class="btn btn-primary">Add Item</button>
       </div>
 
     </form>
-    
+    <form method="POST" action="/delete_list">
+      <button type="submit" name="delete_list" class="btn btn-sm hidden">Delete List</button></td>
+    </form>
     <br>
 
     <table class="table table-striped">
@@ -42,7 +42,9 @@
           <th>Quantity</th>
           <th>Price Each</th>
           <th>Line Price</th>
+
           <!-- Button to enable editing of the lines -->
+          <th><button class = "btn btn-sm" id = "edit">Edit</button></th>
         </tr>
       </thead>
       <tbody>
@@ -69,12 +71,4 @@
   </div>
 
   <script src="/static/listscripts.js"></script>
-  
-{% endblock %}
-
-{% block footer %}
-
-  <form method="POST" action="/delete_list">
-    <button type="submit" name="delete_list" class="btn btn-danger btn-sm">Delete List</button></td>
-  </form>
 {% endblock %}

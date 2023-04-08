@@ -5,7 +5,7 @@ from flask import Flask, redirect, render_template, request, session, url_for
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from modules import create_db_connection, session_required, remove_list, usd
+from modules import create_db_connection, session_required, remove_list, usd, generate_referral
 
 # Configure application
 app = Flask('FinalProject')
@@ -127,7 +127,7 @@ def createlist():
 def viewList():
     app.logger.debug("Session ID is " + str(session['list_id']))
     if request.method == "POST":
-        return "success!"
+        return "how did you get here?"
     else:
         # Fetch item list from database
         connection, db = create_db_connection()
@@ -139,7 +139,9 @@ def viewList():
         for item in items:
             totalcost += item[1] * item[2]
 
-        return render_template('viewlist.html', listname=session['list_name'], items=items, totalcost=totalcost)
+        # Get share link
+        link = generate_referral(session['list_id'],session['list_name'])
+        return render_template('viewlist.html', listname=session['list_name'], items=items, totalcost=totalcost, link=link)
 
 
 @app.route('/add_item', methods=['GET', 'POST'])
@@ -188,5 +190,12 @@ def delete_list():
 
         session.clear()
         return redirect('/')
+    
+@app.route('/ref', methods=['GET'])
+def referral():
+    session.clear()
+    session['list_id'] = request.args.get('list_id')
+    session['list_name'] = request.args.get('list_name')
+    return redirect('/viewlist')
     
 

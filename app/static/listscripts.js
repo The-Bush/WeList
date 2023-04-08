@@ -1,5 +1,53 @@
 document.addEventListener('DOMContentLoaded', function(){
+    
+    let tableRows = document.querySelectorAll('.trow')
+    tableRows.forEach(row => {
+        let button = row.querySelector('.hidden');
 
+        row.addEventListener('mouseover', () =>{
+            button.classList.toggle('hidden');
+        })
+
+        row.addEventListener('mouseout', () =>{
+            button.classList.toggle('hidden');
+        })
+    })
+    
+    let shareButton = document.getElementById('shareButton');
+    let copyStatus = document.getElementById('copyStatus');
+
+    shareButton.addEventListener('click', () => {
+    let valueToCopy = shareButton.value;
+    
+    navigator.clipboard.writeText(valueToCopy)
+        .then(() => {
+        console.log('Text copied to clipboard');
+        copyStatus.textContent = 'Text copied to clipboard';
+        })
+        .catch(err => {
+        console.error('Error copying text to clipboard:', err);
+        });
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     // Get the hidden buttons and the "edit" button to toggle them
     let hiddenButtons = document.querySelectorAll('.hidden');
     let editBtn = document.getElementById('edit');
@@ -16,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function(){
         // Store the toggle state in sessionStorage
         sessionStorage.setItem('isToggled', hiddenButtons[0].classList.contains('hidden') ? 'true' : 'false');
     });
+
+    */
+      
 });
 
     //let priceInput = document.getElementById("price-input");
