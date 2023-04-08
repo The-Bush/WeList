@@ -1,7 +1,7 @@
 # WeList
 ### Video Demo:
 ### Description:
-WeList is a list making/sharing web app where a person can easily create a list and share it with their friends and family by sharing a link OR list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to protype something that gets around that frustration and makes sharing easy and accessible.
+WeList is a list making/sharing web app where a person can easily create a shopping list and share it with their friends and family by sharing a link or list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to protype something that gets around that frustration and makes sharing easy. A good comparison would be pastebin, but formatted to specificall support shopping lists.
 
 ## Languages, Libraries and Frameworks:
 * Python

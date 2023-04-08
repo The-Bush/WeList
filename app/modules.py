@@ -23,6 +23,7 @@ def session_required(f):
     return decorated_function
 
 def generate_referral(list_id, list_name):
+    """ Generate referral URL """
     url = url_for('referral', list_id=list_id, list_name=list_name, _external=True)
     return url
 
