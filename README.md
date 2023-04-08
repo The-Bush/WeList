@@ -19,15 +19,15 @@ WeList is a list making/sharing web app where a person can easily create a list 
 
 ## app.py
 
-App.py is the main flask app file. It handles all of the interactions the user has with the website including accessing creating, and modifying(adding/removing items, deleting) lists by interacting with the database
+App.py is the main flask app file. It handles all of the interactions the user has with the website including accessing, creating, and modifying lists by interacting with the database
 
 ## modules.py
 
-This includes some helper functions that aren't directly related to website interactions, so I chose to abstract them to their own seperate .py file. These include a function for establishing transactions with the database, one for deleting lists (included in modules.py so that any future automatic database management can access it).
+This includes some helper functions that aren't directly related to website interactions, so I chose to abstract them to their own seperate .py file. These include a function for establishing transactions with the database, one for deleting lists, and more.
 
 ## listscripts.js
 
-This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete.
+This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete. It also enables the user to copy a referral link to their clipboard for sharing.
 
 ## styles.css
 
