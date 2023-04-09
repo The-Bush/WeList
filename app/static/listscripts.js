@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function(){
         let button = row.querySelector('.hidden');
 
         row.addEventListener('mouseover', () =>{
-            button.classList.toggle('hidden');
+            button.classList.remove('hidden');
         })
 
         row.addEventListener('mouseout', () =>{
-            button.classList.toggle('hidden');
+            button.classList.add('hidden');
         })
     })
     

@@ -47,6 +47,7 @@
           <th>Quantity</th>
           <th>Price Each</th>
           <th>Line Price</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -63,7 +64,7 @@
             <!-- Remove Item button -->
             <form method="POST" action="/remove_item">
                 <button type="submit" name="item" value="{{ item[3] }}" class="btn btn-sm hidden">
-                  <img class="trash-icon"src="static/icons/trash.png" alt="Delete Item">
+                  <img class="trash-icon "src="static/icons/trash.png" alt="Delete Item">
                 </button></td>
             </form>
         </tr>

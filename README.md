@@ -1,7 +1,7 @@
 # WeList
-### Video Demo:
+### Video Demo: https://www.youtube.com/watch?v=WPt_91qdXu0
 ### Description:
-WeList is a list making/sharing web app where a person can easily create a shopping list and share it with their friends and family by sharing a link or list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to protype something that gets around that frustration and makes sharing easy. A good comparison would be pastebin, but formatted to specificall support shopping lists.
+WeList is a list making/sharing web app where a person can easily create a shopping list and share it with their friends and family by sharing a link or list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to prototype something that gets around that frustration and makes sharing easy. A good comparison would be pastebin, but formatted to specifically support shopping lists.
 
 ## Languages, Libraries and Frameworks:
 * Python
@@ -27,7 +27,7 @@ This includes some helper functions that aren't directly related to website inte
 
 ## listscripts.js
 
-This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete. It also enables the user to copy a referral link to their clipboard for sharing.
+This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete. It also enables the user to copy a shareable link to their clipboard for sharing.
 
 ## styles.css
 
