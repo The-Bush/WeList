@@ -53,14 +53,19 @@
       <tbody>
         {% for item in items %}
         <tr class="trow">
+
+          <!-- Item name, qty, price each-->
           <td>{{ item[0] }}</td>
           <td>{{ item[1] }}</td>
           <td>{{ item[2] | usd }}</td>
+
+          <!-- Calculate total price of line -->
           {% set priceEach = item[2] | float %}
           {% set qty = item[1] | float %}
           {% set totalPrice = priceEach * qty %}
           <td>{{ totalPrice | usd }}</td>
           <td>
+            
             <!-- Remove Item button -->
             <form method="POST" action="/remove_item">
                 <button type="submit" name="item" value="{{ item[3] }}" class="btn btn-sm hidden">
