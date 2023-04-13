@@ -1,4 +1,4 @@
-# [WeList](https://welist.onrender.com/)
+# [WeList](https://welist.onrender.com/) 👋
 |*WeList is hosted on Render's free web service tier, meaning storage is not persistent and lists may disppear.* |
 ### Video Demo: https://www.youtube.com/watch?v=WPt_91qdXu0
 ### Description:
