@@ -19,15 +19,15 @@ WeList is a list making/sharing web app where a person can easily create a shopp
 
 ## app.py
 
-App.py is the main flask app file. It handles all of the interactions the user has with the website including accessing, creating, and modifying lists by interacting with the database
+App.py is the main flask app file. It handles all of the interactions the user has with the website including accessing, creating, and modifying lists by interacting with the database.
 
 ## modules.py
 
-This includes some helper functions that aren't directly related to website interactions, so I chose to abstract them to their own seperate .py file. These include a function for establishing transactions with the database, one for deleting lists, and more.
+This includes some helper functions that aren't directly related to website interactions, so I chose to abstract them to their own seperate .py file. These include a function for establishing transactions with the database, one for deleting lists, and others.
 
 ## listscripts.js
 
-This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete. It also enables the user to copy a shareable link to their clipboard for sharing.
+This .js file is specifically used on the listview page. It enables me to hide and un-hide the delete button based on if a user has hovered their mouse/tapped on the row they wish to delete. It also enables the user to copy a shareable link to their clipboard.
 
 ## styles.css
 
@@ -37,7 +37,7 @@ Contains only a few classes. One for the "hidden" buttons, and one for the appea
 
 All other .html pages extend layout.html
 
-The main feature of layout.html is the included navbar. This navbar is taken straight from the [bootstrap docs](https://getbootstrap.com/docs/5.3/components/navbar/) and modified to have links to different pages of the website.
+The main feature of layout.html is the included navbar. This navbar is taken from the [bootstrap docs](https://getbootstrap.com/docs/5.3/components/navbar/) and modified to have links to different pages of the website.
 
 ## home.html, createlist.html, viewlist.html
 
