@@ -1,4 +1,4 @@
-# [WeList](https://welist.onrender.com/) 👋
+# [WeList](https://welist.onrender.com/) 📃
 |*WeList is hosted on Render's free web service tier, meaning storage is not persistent and lists may disppear.* |
 ### Video Demo: https://www.youtube.com/watch?v=WPt_91qdXu0
 ### Description:
@@ -6,7 +6,7 @@ WeList is a grocery list making/sharing web app where a person can easily create
 
 
 ## Languages, Libraries and Frameworks:
-* Python
+* Python 🐍
     - sqlite3
     - Flask
     - Flask_Session
@@ -16,7 +16,7 @@ WeList is a grocery list making/sharing web app where a person can easily create
 * HTML
 * CSS
 * JavaScript
-* Bootstrap
+* Bootstrap 🥾
 
 
 ## app.py
