@@ -12,7 +12,7 @@ To launch the website,cd into the /app directory and execute "flask run".
     - Flask_Session
     - Werkzeug
     - Jinja2
-
+    - Gunicorn
 * HTML
 * CSS
 * JavaScript
