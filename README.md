@@ -3,7 +3,6 @@
 ### Description:
 WeList is a grocery list making/sharing web app where a person can easily create a shopping list and share it with their friends and family by sharing a link or list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to prototype something that gets around that frustration and makes sharing easy. A good comparison would be pastebin, but formatted to specifically support shopping lists.
 
-To launch the website,cd into the /app directory and execute "flask run".
 
 ## Languages, Libraries and Frameworks:
 * Python
