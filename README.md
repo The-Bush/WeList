@@ -1,5 +1,5 @@
 # [WeList](https://welist.onrender.com/) 📃
-*WeList is hosted on Render's free web service tier, meaning storage is not persistent and lists may disppear.*
+*WeList is hosted on Render's free web service tier, meaning storage is not persistent and lists may disppear. Additionally, the website will take a long time to load if it has not been accessed in the last 15 minutes. This is another limitation of Render's free tier.*
 ### Video Demo: https://www.youtube.com/watch?v=WPt_91qdXu0
 ### Description:
 WeList is a grocery list making/sharing web app where a person can easily create a shopping list and share it with their friends and family by sharing a link or list name and password. Too many apps exist that require logins and various forms of authentication to access simple, shared content. With WeList, I wanted to prototype something that gets around that frustration and makes sharing easy. A good comparison would be pastebin, but formatted to specifically support shopping lists.
@@ -33,7 +33,7 @@ This .js file is specifically used on the listview page. It enables me to hide a
 
 ## styles.css
 
-Contains only a few classes. One for the "hidden" buttons, and one for the appearance of the trash icon.
+Contains only a few classes. One for the "hidden" buttons, and some for the appearance of icons.
 
 ## layout.html
 
