@@ -33,7 +33,7 @@ This .js file is specifically used on the listview page. It enables me to hide a
 
 ## styles.css
 
-Contains only a few classes. One for the "hidden" buttons, and one for the appearance of the trash icon.
+Contains only a few classes. One for the "hidden" buttons, and some for the appearance of icons.
 
 ## layout.html
 
