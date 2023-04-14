@@ -208,11 +208,11 @@ def remove_item():
 def delete_list():
     if request.method == "POST":
         list_id = session["list_id"]
-
+        list_name = session["list_name"]
         # Delete all items from items table and list from lists table
         remove_list(list_id)
-
         session.clear()
+        flash(f"Deleted '{list_name}'")
         return redirect("/")
 
 
