@@ -1,7 +1,7 @@
 import os
 import datetime
 
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import Flask, redirect, render_template, request, session, flash
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -11,10 +11,11 @@ from modules import (
     remove_list,
     usd,
     generate_referral,
+    throw_error,
 )
 
 # Configure application
-app = Flask("FinalProject")
+app = Flask("WeList")
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -53,12 +54,14 @@ def home():
 
             # Check if the list exists
             if rows is None:
-                return "Invalid list name"
+                flash("List not found.")
+                return redirect("/")
 
             # If list has a password, check for match
             if rows[2] != None:
                 if not check_password_hash(rows[2], password):
-                    return "Invalid password"
+                    flash("Invalid Password")
+                    return redirect("/")
 
             # Store the id and name of the accessed list
             session["list_id"] = rows[0]
@@ -69,7 +72,6 @@ def home():
             return redirect("/createlist")
 
     else:
-        app.logger.info("New user accessed website")
         return render_template("home.html")
 
 
@@ -78,13 +80,14 @@ def createlist():
     if request.method == "POST":
         # Handle missing entries
         if not request.form.get("listname"):
-            app.logger.error("List requires a name")
-            return "List Requires a name", 400
+            flash("List requires a name")
+            return redirect("/createlist")
 
         # Handle mismatched passwords
-        if request.form.get("password"):
+        if request.form.get("password") or request.form.get("confirmation"):
             if request.form.get("password") != request.form.get("confirmation"):
-                app.logger.error("Passwords do not match")
+                flash("Passwords must match")
+                return redirect("/createlist")
 
             else:
                 password = request.form.get("password")
@@ -108,7 +111,8 @@ def createlist():
         rows = db.fetchall()
         if rows:
             connection.close()
-            return "Error, listname already in use"
+            flash("List name is already in use.")
+            return redirect("/createlist")
 
         # Insert new list into the database
         db.execute(
@@ -129,35 +133,31 @@ def createlist():
         return render_template("createlist.html")
 
 
-@app.route("/viewlist", methods=["GET", "POST"])
+@app.route("/viewlist", methods=["GET"])
 @session_required
 def viewList():
-    app.logger.debug("Session ID is " + str(session["list_id"]))
-    if request.method == "POST":
-        return "how did you get here?"
-    else:
-        # Fetch item list from database
-        connection, db = create_db_connection()
-        rows = db.execute(
-            "SELECT name, qty, cost_each, id FROM items WHERE list_id = ?",
-            (session["list_id"],),
-        )
-        items = rows.fetchall()
-        connection.close()
+    # Fetch item list from database
+    connection, db = create_db_connection()
+    rows = db.execute(
+        "SELECT name, qty, cost_each, id FROM items WHERE list_id = ?",
+        (session["list_id"],),
+    )
+    items = rows.fetchall()
+    connection.close()
 
-        totalcost = 0.0
-        for item in items:
-            totalcost += item[1] * item[2]
+    totalcost = 0.0
+    for item in items:
+        totalcost += item[1] * item[2]
 
-        # Get share link
-        link = generate_referral(session["list_id"], session["list_name"])
-        return render_template(
-            "viewlist.html",
-            listname=session["list_name"],
-            items=items,
-            totalcost=totalcost,
-            link=link,
-        )
+    # Get share link
+    link = generate_referral(session["list_id"], session["list_name"])
+    return render_template(
+        "viewlist.html",
+        listname=session["list_name"],
+        items=items,
+        totalcost=totalcost,
+        link=link,
+    )
 
 
 @app.route("/add_item", methods=["GET", "POST"])
@@ -169,10 +169,15 @@ def add_item():
         costEach = request.form.get("costEach")
 
         if not itemName.strip() or not qty.strip():
-            return "Error, no item name or quantity provided"
+            flash("No item name or quantity provided.")
+            return redirect("/viewlist")
 
         if not costEach.strip():
             costEach = 0
+
+        if costEach < 0:
+            flash("Cost cannot be negative")
+            return redirect("/viewlist")
 
         # Insert new item into table
         connection, db = create_db_connection()

@@ -1,5 +1,5 @@
 import sqlite3
-from flask import redirect, session, url_for
+from flask import redirect, request, session, url_for, flash, render_template
 from functools import wraps
 
 
@@ -24,6 +24,13 @@ def session_required(f):
         return f(*args, **kwargs)
 
     return decorated_function
+
+
+def throw_error(message: str):
+    """Flashes error message to the currently loaded template/url"""
+    url = request.referrer or '/'
+    flash(message)
+    return redirect(url)
 
 
 def generate_referral(list_id, list_name):
