@@ -28,7 +28,7 @@ def session_required(f):
 
 def throw_error(message: str):
     """Flashes error message to the currently loaded template/url"""
-    url = request.referrer or '/'
+    url = request.referrer or "/"
     flash(message)
     return redirect(url)
 

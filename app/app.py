@@ -168,13 +168,22 @@ def add_item():
         qty = request.form.get("qty")
         costEach = request.form.get("costEach")
 
-        if not itemName.strip() or not qty.strip():
+        if not itemName.strip() or not qty:
             flash("No item name or quantity provided.")
             return redirect("/viewlist")
 
-        if not costEach.strip():
+        # If no cost entered, default to zero
+        if not costEach:
             costEach = 0
 
+        # Ensure cost is a float
+        try:
+            costEach = float(costEach)
+        except ValueError:
+            flash("Enter a valid cost")
+            return redirect("/viewlist")
+
+        # Ensure cost is positive
         if costEach < 0:
             flash("Cost cannot be negative")
             return redirect("/viewlist")
