@@ -32,9 +32,9 @@ def home():
         if "access" in request.form:
             # Catch if list name is empty
             if not request.form.get("listname"):
-                app.logger.error("All forms not complete")
-                return "All forms not complete", 400
-
+                flash("All forms not complete")
+                return redirect("/")
+            
             # Catch if password was input
             if not request.form.get("password"):
                 password = None
