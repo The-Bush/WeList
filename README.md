@@ -52,7 +52,7 @@ viewlist.html will read and output all of the contents of the list for the user 
 
 This database includes two tables, one for storing list names and passwords, and another for storing items. The items table is indexed for faster searching based on the list_id.
 
-```
+```sql
 CREATE TABLE sqlite_sequence(name,seq);
 
 CREATE TABLE lists(
